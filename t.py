@@ -16,19 +16,17 @@ def shuf():
     for i in range(200):
         mX = randint(-1,1)
         mY = randint(-1,1)
-        while mX == 0:
-            mX = randint(-1,1)
+                  
         if cX >= 3:
-            mX = -1
+            mX = randint(-1,0)
         if cX <= 0:
-            mX = 1
+            mX = randint(0, 1)
 
-        while mY == 0:
-            mY = randint(-1,1)
+        
         if cY >= 3:
-            mY = -1
+            mY = randint(-1, 0)
         if cY <= 0:
-            mY = 1
+            mY = randint(0, 1)
         
         swap(cX + mX, cY + mY, cX, cY)
         cX += mX
