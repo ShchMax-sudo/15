@@ -1,14 +1,14 @@
 from random import randint
 
-A = [list([0] * 4) for i in range(4)]
+a = [list([0] * 4) for i in range(4)]
 for i in range(4):
     for j in range(4):
-        A[i][j] = i * 4 + (j + 1)
+        a[i][j] = i * 4 + (j + 1)
 
 def swap(xS, yS, xE, yE):
-    t = A[xS][yS]
-    A[xS][yS] = A[xE][yE]
-    A[xE][yE] = t
+    t = a[xS][yS]
+    a[xS][yS] = a[xE][yE]
+    a[xE][yE] = t
 
 def shuf():
     cX = 3
@@ -32,7 +32,7 @@ def shuf():
         cX += mX
         cY += mY
 
-print(A)
+print(a)
 shuf()
-print(A)
+print(a)
         
