@@ -1,5 +1,5 @@
 # Yveega
-
+ 
 def show(a, win):
     global x, y
     print('_' * 13)
@@ -11,7 +11,7 @@ def show(a, win):
                 print("|", j, ' ' * (1 - j // 10), sep='', end='')
         print('|')
         print('_' * 13)
-
+ 
 # Den
 def checker():
     global a, x, y
@@ -24,46 +24,46 @@ def checker():
             if a[i][g] != (i*4)+g+1 :
                 return False
     return True
-
+ 
 # Vlad
 from random import randint
-
+ 
 a = [list([0] * 4) for i in range(4)]
 for i in range(4):
     for j in range(4):
         a[i][j] = i * 4 + (j + 1)
-
+ 
 def swap(xS, yS, xE, yE):
     t = a[xS][yS]
     a[xS][yS] = a[xE][yE]
     a[xE][yE] = t
-
+ 
 def shuf():
     cX = 3
     cY = 3
     for i in range(200):
         mX = randint(-1,1)
         mY = randint(-1,1)
-                  
+                 
         if cX >= 3:
             mX = randint(-1,0)
         if cX <= 0:
             mX = randint(0, 1)
-
-        
+ 
+       
         if cY >= 3:
             mY = randint(-1, 0)
         if cY <= 0:
             mY = randint(0, 1)
-        
+       
         swap(cX + mX, cY + mY, cX, cY)
         cX += mX
         cY += mY
-
+ 
 shuf()
-
+ 
 # ShchMax
-
+ 
 def MoveRight():
     global x, y, win, a
     if (not win):
@@ -75,7 +75,7 @@ def MoveRight():
             if (checker()):
                 win = True
             show(a, win)
-
+ 
 def MoveLeft():
     global x, y, win, a
     if (not win):
@@ -87,7 +87,7 @@ def MoveLeft():
             if (checker()):
                 win = True
             show(a, win)
-
+ 
 def MoveDown():
     global x, y, win, a
     if (not win):
@@ -99,7 +99,7 @@ def MoveDown():
             if (checker()):
                 win = True
             show(a, win)
-
+ 
 def MoveUp():
     global x, y, win, a
     if (not win):
@@ -111,11 +111,11 @@ def MoveUp():
             if (checker()):
                 win = True
             show(a, win)
-
+ 
 # Game
 win = False
 x, y = 0, 0
-checker() 
+checker()
 show(a, False)
 while (not win):
     b = input()
