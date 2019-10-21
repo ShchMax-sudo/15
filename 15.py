@@ -60,9 +60,7 @@ def shuf():
         cX += mX
         cY += mY
 
-print(a)
 shuf()
-print(a)
 
 # ShchMax
 
