@@ -1,4 +1,72 @@
-def MoveRiaht():
+# Yveega
+
+def show(a, win):
+    global x, y
+    print('_' * 13)
+    for i in a:
+        for j in i:
+            if j == 16 and not win:
+                print("|  ", end='')
+            else:
+                print("|", j, ' ' * (1 - j // 10), sep='', end='')
+        print('|')
+        print('_' * 13)
+
+# Den
+def checker():
+    global a, x, y
+    for i in range(3):
+        for g in range(3):
+            if a[i][g] == 16 :
+                x, y = i, g
+    for i in range(3):
+        for g in range(3):
+            if a[i][g] != (i*4)+g+1 :
+                return False
+    return True
+
+# Vlad
+from random import randint
+
+a = [list([0] * 4) for i in range(4)]
+for i in range(4):
+    for j in range(4):
+        a[i][j] = i * 4 + (j + 1)
+
+def swap(xS, yS, xE, yE):
+    t = a[xS][yS]
+    a[xS][yS] = a[xE][yE]
+    a[xE][yE] = t
+
+def shuf():
+    cX = 3
+    cY = 3
+    for i in range(200):
+        mX = randint(-1,1)
+        mY = randint(-1,1)
+                  
+        if cX >= 3:
+            mX = randint(-1,0)
+        if cX <= 0:
+            mX = randint(0, 1)
+
+        
+        if cY >= 3:
+            mY = randint(-1, 0)
+        if cY <= 0:
+            mY = randint(0, 1)
+        
+        swap(cX + mX, cY + mY, cX, cY)
+        cX += mX
+        cY += mY
+
+print(a)
+shuf()
+print(a)
+
+# ShchMax
+
+def MoveRight():
     global x, y, win, a
     if (not win):
         if (x == 3):
@@ -32,7 +100,7 @@ def MoveDown():
             y += 1
             if (checker()):
                 win = True
-            shaw(a, win)
+            show(a, win)
 
 def MoveUp():
     global x, y, win, a
@@ -45,3 +113,19 @@ def MoveUp():
             if (checker()):
                 win = True
             show(a, win)
+
+# Game
+win = False
+x, y = 0, 0
+checker() 
+show(a, False)
+while (not win):
+    b = input()
+    if (b == "w" or b == "W"):
+        MoveLeft()
+    elif (b == "a" or b == "A"):
+        MoveUp()
+    elif (b == "s" or b == "S"):
+        MoveRight()
+    elif (b == "d" or b == "D"):
+        MoveDown()
